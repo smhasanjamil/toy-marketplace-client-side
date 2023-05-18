@@ -1,0 +1,12 @@
+.back-home-btn:hover{
+background-color: rgb(185 28 28);
+border: 2px solid rgb(185 28 28);
+}
+
+
+
+.back-home-btn{
+    background-color: rgb(220 38 38);
+    border: 2px solid rgb(220 38 38);
+    color: #fff;
+}

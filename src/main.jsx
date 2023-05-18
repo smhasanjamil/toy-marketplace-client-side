@@ -14,6 +14,7 @@ import AddAToy from './components/Toys/AddAToy/AddAToy';
 import Blog from './components/Blog/Blog';
 import Register from './components/Register/Register';
 import Login from './components/Login/Login';
+import ErrorPage from './ErrorPage/ErrorPage';
 
 const router = createBrowserRouter([
   {
@@ -49,6 +50,10 @@ const router = createBrowserRouter([
         element: <Login />,
       },
     ],
+  },
+  {
+    path: "*",
+    element: <ErrorPage />,
   },
 ]);
 
