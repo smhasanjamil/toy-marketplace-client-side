@@ -1,10 +1,59 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
-import App from './App.jsx'
 import './index.css'
+
+import {
+  createBrowserRouter,
+  RouterProvider,
+} from "react-router-dom";
+import Main from './components/Main';
+import Home from './components/Home/Home/Home';
+import AllToys from './components/Toys/AllToys/AllToys';
+import MyToys from './components/Toys/MyToys/MyToys';
+import AddAToy from './components/Toys/AddAToy/AddAToy';
+import Blog from './components/Blog/Blog';
+import Register from './components/Register/Register';
+import Login from './components/Login/Login';
+
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <Main />,
+    children: [
+      {
+        path: "/",
+        element: <Home />,
+      },
+      {
+        path: "/all-toys",
+        element: <AllToys />,
+      },
+      {
+        path: "/my-toys",
+        element: <MyToys />,
+      },
+      {
+        path: "/add-a-toy",
+        element: <AddAToy />,
+      },
+      {
+        path: "/blog",
+        element: <Blog />,
+      },
+      {
+        path: "/register",
+        element: <Register />,
+      },
+      {
+        path: "/login",
+        element: <Login />,
+      },
+    ],
+  },
+]);
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <App />
+    <RouterProvider router={router} />
   </React.StrictMode>,
 )
