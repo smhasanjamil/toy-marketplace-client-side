@@ -2,6 +2,17 @@ import { Link } from "react-router-dom";
 
 
 const Register = () => {
+    const handleRegister = (event) => {
+        event.preventDefault();
+        // console.log('clicked');
+        const form = event.target;
+        const name = form.name.value;
+        const photoURL = form.photoURL.value;
+        const email = form.email.value;
+        const password = form.password.value;
+        const user = { name, photoURL, email, password };
+        console.log(user);
+    }
     return (
         <div className="container mx-auto px-2">
 
@@ -19,7 +30,7 @@ const Register = () => {
 
                     <div className="card">
                         <div className="md:card-body">
-                            <form>
+                            <form onSubmit={handleRegister}>
                                 <div className="form-control">
                                     <label className="label">
                                         <span className="label-text">Name</span>
@@ -30,19 +41,19 @@ const Register = () => {
                                     <label className="label">
                                         <span className="label-text">Photo URL</span>
                                     </label>
-                                    <input type="text" placeholder="Enter your photo url" className="input input-bordered" required />
+                                    <input type="text" name="photoURL" placeholder="Enter your photo url" className="input input-bordered" required />
                                 </div>
                                 <div className="form-control">
                                     <label className="label">
                                         <span className="label-text">Email</span>
                                     </label>
-                                    <input type="email" placeholder="Enter your email" className="input input-bordered" required />
+                                    <input type="email" name="email" placeholder="Enter your email" className="input input-bordered" required />
                                 </div>
                                 <div className="form-control">
                                     <label className="label">
                                         <span className="label-text">Password</span>
                                     </label>
-                                    <input type="password" placeholder="Enter your password" className="input input-bordered" required />
+                                    <input type="password" name="password" placeholder="Enter your password" className="input input-bordered" required />
                                 </div>
                                 <div className="form-control my-2">
                                     <div className="flex flex-col justify-start gap-2">
