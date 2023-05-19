@@ -8,7 +8,7 @@ const Header = () => {
         <div>
             <nav className="navbar mx-auto md:container">
                 <div className="navbar-logo">
-                    <Link to="/"><span className='text-black'>Motor </span><span className='text-red-600'>Mart</span></Link>
+                    <Link to="/"><span className='text-black'>Motor</span><span className='text-red-600'>Mart</span></Link>
                 </div>
                 <ul className={isOpen ? "navbar-links active" : "navbar-links"}> 
                     <li className="navbar-item">
