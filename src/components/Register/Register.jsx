@@ -3,10 +3,10 @@ import { Link } from "react-router-dom";
 
 const Register = () => {
     return (
-        <div className="container mx-auto">
+        <div className="container mx-auto px-2">
 
 
-            <div className="flex flex-col gap-8 md:gap-2 md:justify-center md:items-center h-screen md:flex-row-reverse px-4 md:px-0 my-8 md:my-0">
+            <div className="flex flex-col gap-8 md:gap-2 md:justify-center md:items-center h-screen md:flex-row-reverse px-2 md:px-0 my-8 md:my-0">
 
                 <div className="w-full md:w-6/12">
                     <div className=" flex flex-col gap-2 md:w-3/4">
@@ -46,8 +46,7 @@ const Register = () => {
                                 </div>
                                 <div className="form-control my-2">
                                     <div className="flex flex-col justify-start gap-2">
-                                        <Link to="#" className="text-blue-700">Forgot password?</Link>
-                                        <p>Already have an account? <Link to="/login" className="text-blue-700">Login Here</Link> </p>
+                                        <p>Already a member of our Motor Mart? <Link to="/login" className="text-blue-700">Login Here</Link> </p>
                                     </div>
                                 </div>
                                 <div className="form-control mt-6">
