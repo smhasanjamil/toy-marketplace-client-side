@@ -1,9 +1,10 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../providers/AuthProviders";
 
 
 const Login = () => {
+    const [wrongInfo, setWrongInfo] = useState("");
     const { signIn, signInWithGoogle } = useContext(AuthContext);
     const navigate = useNavigate();
     const location = useLocation();
@@ -28,9 +29,16 @@ const Login = () => {
                 navigate(from, { replace: true });
             })
             .catch((error) => {
-                // const errorCode = error.code;
-                const errorMessage = error.message;
-                console.log(errorMessage);
+                const errorCode = error.code;
+
+                if (errorCode === "auth/invalid-email" || errorCode === "auth/user-not-found") {
+                    setWrongInfo("The email you entered is invalid or not registered.");
+                } else if (errorCode === "auth/wrong-password") {
+                    setWrongInfo("The password you entered is incorrect.");
+                } else {
+                    setWrongInfo("Something went wrong. Please try again.");
+                }
+
             });
     }
 
@@ -82,6 +90,9 @@ const Login = () => {
                                     <div className="flex flex-col justify-start gap-2">
                                         <Link to="#" className="text-blue-700">Forgot password?</Link>
                                         <p>New to the Motor Mart? <Link to="/register" className="text-blue-700">Join Us Today!</Link> </p>
+                                        <div className="form-control text-center mt-2 text-red-600 text-lg font-bold">
+                                            <h1>{wrongInfo}</h1>
+                                        </div>
                                     </div>
                                 </div>
                                 <div className="form-control mt-6">
