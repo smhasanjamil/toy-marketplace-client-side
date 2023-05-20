@@ -1,9 +1,59 @@
+import { useEffect, useState } from "react";
 
 
 const AllToys = () => {
+
+    const [cars, setCars] = useState([]);
+
+    useEffect(() => {
+        fetch('http://localhost:5000/all-cars')
+            .then(res => res.json())
+            .then(data => {
+                setCars(data);
+            })
+    }, [])
+    console.log(cars);
     return (
         <div className="container mx-auto px-2">
             <h1>This is all toys section</h1>
+            <h1>Total : {cars.length}</h1>
+
+
+
+            <div className="overflow-x-auto">
+                <table className="table w-full">
+                    {/* head */}
+                    <thead>
+                        <tr>
+                            <th></th>
+                            <th>Seller</th>
+                            <th>Toy Name</th>
+                            <th>Sub-category</th>
+                            <th>Price</th>
+                            <th>SAvailable</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {cars.slice(0, 20).map((car, index) => (
+                            <tr key={car._id}>
+                                <th>{index + 1}</th>
+                                <td>{car.sellerName}</td>
+                                <td>{car.toyName}</td>
+                                <td>{car.subCategory}</td>
+                                <td>${car.price}</td>
+                                <td>{car.availableQuantity}</td>
+                                <td><button className="btn bg-red-600 border-red-600 hover:bg-red-700 hover:border-red-700 text-white">View Details</button></td>
+                            </tr>
+                        ))}
+                    </tbody>
+                </table>
+            </div>
+
+
+
+
+
         </div>
     );
 };
