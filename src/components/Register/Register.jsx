@@ -1,13 +1,14 @@
 import { useContext, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../providers/AuthProviders";
+import { updateProfile } from "firebase/auth";
 
 
 const Register = () => {
 
     const [wrongInfo, setWrongInfo] = useState("");
 
-    const { user, createUser } = useContext(AuthContext);
+    const { createUser } = useContext(AuthContext);
     // console.log(createUser);
 
     const navigate = useNavigate();
@@ -16,12 +17,12 @@ const Register = () => {
         event.preventDefault();
         // console.log('clicked');
         const form = event.target;
-        const displayName = form.name.value;
-        const photoURL = form.photoURL.value;
+        const name = form.name.value;
+        const photo = form.photoURL.value;
         const email = form.email.value;
         const password = form.password.value;
-        const user = { displayName, photoURL, email, password };
-        console.log(user);
+        // const user = { name, photo, email, password };
+        // console.log(user);
 
         if (!password) {
             const errorMessage = "Enter a password.";
@@ -73,6 +74,7 @@ const Register = () => {
                 console.log(user);
                 form.reset();
                 navigate('/');
+                updateUserData(user, name, photo);
             })
             .catch((error) => {
                 // const errorCode = error.code;
@@ -80,8 +82,21 @@ const Register = () => {
                 setWrongInfo(errorMessage);
             });
 
+        const updateUserData = (user, name, photo) => {
+            updateProfile(user, {
+                displayName: name, photoURL: photo
+            })
+                .then(() => {
+                    console.log("Profile updated!");
+                }).catch((error) => {
+                    console.log(error);
+                });
+        }
+
+
 
     }
+
     return (
         <div className="container mx-auto px-2">
 
