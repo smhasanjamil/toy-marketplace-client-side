@@ -4,7 +4,7 @@ import { AuthContext } from "../../providers/AuthProviders";
 
 
 const Login = () => {
-    const { signIn } = useContext(AuthContext);
+    const { signIn, signInWithGoogle } = useContext(AuthContext);
 
     const handleLogin = event => {
         event.preventDefault();
@@ -19,14 +19,17 @@ const Login = () => {
             .then((userCredential) => {
                 const user = userCredential.user;
                 console.log(user);
+                form.reset();
             })
             .catch((error) => {
                 // const errorCode = error.code;
                 const errorMessage = error.message;
                 console.log(errorMessage);
             });
-
     }
+
+  
+
     return (
         <div className="container mx-auto px-2">
 
@@ -74,7 +77,7 @@ const Login = () => {
                             <div className="divider">OR</div>
 
                             <div className="form-control">
-                                <button className="btn bg-red-600 border-red-600 hover:bg-red-700 hover:border-red-700 text-white">
+                                <button onClick={handleGoogleSignIn} className="btn bg-red-600 border-red-600 hover:bg-red-700 hover:border-red-700 text-white">
                                     <div className="flex flex-row gap-1 justify-center items-center">
                                         <div><img src="https://i.ibb.co/TPwxtp6/social.png" alt="google logo" className="h-8 w-8" /></div>
                                         <div><p>Login With Google</p></div>
