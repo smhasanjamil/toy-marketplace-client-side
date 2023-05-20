@@ -28,7 +28,17 @@ const Login = () => {
             });
     }
 
-  
+    const handleGoogleSignIn = () => {
+        signInWithGoogle()
+            .then((result) => {
+                const user = result.user;
+                console.log(user);
+            }).catch((error) => {
+                // const errorCode = error.code;
+                const errorMessage = error.message;
+                console.log(errorMessage);
+            });
+    }
 
     return (
         <div className="container mx-auto px-2">
