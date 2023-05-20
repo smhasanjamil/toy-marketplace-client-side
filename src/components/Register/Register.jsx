@@ -12,11 +12,11 @@ const Register = () => {
         event.preventDefault();
         // console.log('clicked');
         const form = event.target;
-        const name = form.name.value;
+        const displayName = form.name.value;
         const photoURL = form.photoURL.value;
         const email = form.email.value;
         const password = form.password.value;
-        const user = { name, photoURL, email, password };
+        const user = { displayName, photoURL, email, password };
         console.log(user);
 
         createUser(email, password)
