@@ -1,4 +1,4 @@
-import { Link, NavLink } from 'react-router-dom';
+import { Link, NavLink, useNavigate } from 'react-router-dom';
 import './Header.css';
 import { useContext, useState } from 'react';
 import { AuthContext } from '../../providers/AuthProviders';
@@ -8,10 +8,13 @@ const Header = () => {
 
     const { user, logOut } = useContext(AuthContext);
 
+    const navigate = useNavigate();
+
     const handleLogOut = () => {
         logOut()
             .then(() => {
                 console.log("Sign-out successful");
+                navigate('/login');
             }).catch((error) => {
                 console.log(error);
             });
