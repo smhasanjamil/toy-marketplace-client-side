@@ -1,7 +1,32 @@
+import { useContext } from "react";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../../providers/AuthProviders";
 
 
 const Login = () => {
+    const { signIn } = useContext(AuthContext);
+
+    const handleLogin = event => {
+        event.preventDefault();
+        // console.log('clicked');
+        const form = event.target;
+        const email = form.email.value;
+        const password = form.password.value;
+        // const user = { email, password };
+        // console.log(user);
+
+        signIn(email, password)
+            .then((userCredential) => {
+                const user = userCredential.user;
+                console.log(user);
+            })
+            .catch((error) => {
+                // const errorCode = error.code;
+                const errorMessage = error.message;
+                console.log(errorMessage);
+            });
+
+    }
     return (
         <div className="container mx-auto px-2">
 
@@ -20,18 +45,18 @@ const Login = () => {
 
                     <div className="card">
                         <div className="md:card-body">
-                            <form>
+                            <form onSubmit={handleLogin}>
                                 <div className="form-control">
                                     <label className="label">
                                         <span className="label-text">Email</span>
                                     </label>
-                                    <input type="email" placeholder="Enter your email" className="input input-bordered" required />
+                                    <input type="email" name="email" placeholder="Enter your email" className="input input-bordered" required />
                                 </div>
                                 <div className="form-control">
                                     <label className="label">
                                         <span className="label-text">Password</span>
                                     </label>
-                                    <input type="password" placeholder="Enter your password" className="input input-bordered" required />
+                                    <input type="password" name="password" placeholder="Enter your password" className="input input-bordered" required />
                                 </div>
                                 <div className="form-control my-2">
                                     <div className="flex flex-col justify-start gap-2">
@@ -43,17 +68,21 @@ const Login = () => {
                                     <button className="btn bg-red-600 border-red-600 hover:bg-red-700 hover:border-red-700 text-white">Login</button>
                                 </div>
 
-                                <div className="divider">OR</div>
-
-                                <div className="form-control">
-                                    <button className="btn bg-red-600 border-red-600 hover:bg-red-700 hover:border-red-700 text-white">
-                                        <div className="flex flex-row gap-1 justify-center items-center">
-                                            <div><img src="https://i.ibb.co/TPwxtp6/social.png" alt="google logo" className="h-8 w-8" /></div>
-                                            <div><p>Login With Google</p></div>
-                                        </div>
-                                    </button>
-                                </div>
                             </form>
+
+
+                            <div className="divider">OR</div>
+
+                            <div className="form-control">
+                                <button className="btn bg-red-600 border-red-600 hover:bg-red-700 hover:border-red-700 text-white">
+                                    <div className="flex flex-row gap-1 justify-center items-center">
+                                        <div><img src="https://i.ibb.co/TPwxtp6/social.png" alt="google logo" className="h-8 w-8" /></div>
+                                        <div><p>Login With Google</p></div>
+                                    </div>
+                                </button>
+                            </div>
+
+
                         </div>
                     </div>
 
