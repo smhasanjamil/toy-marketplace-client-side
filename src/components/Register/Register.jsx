@@ -1,9 +1,11 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../providers/AuthProviders";
 
 
 const Register = () => {
+
+    const [wrongInfo, setWrongInfo] = useState("");
 
     const { user, createUser } = useContext(AuthContext);
     // console.log(createUser);
@@ -19,6 +21,50 @@ const Register = () => {
         const user = { displayName, photoURL, email, password };
         console.log(user);
 
+        if (!password) {
+            const errorMessage = "Enter a password.";
+            setWrongInfo(errorMessage);
+            return;
+        }
+
+        if (!/(?=.*[A-Za-z])/.test(password)) {
+            const errorMessage = "Include a letter.";
+            setWrongInfo(errorMessage);
+            return;
+        }
+
+        if (!/(?=.*\d)/.test(password)) {
+            const errorMessage = "Include a number.";
+            setWrongInfo(errorMessage);
+            return;
+        }
+
+        if (!/(?=.*[@#$%^&+=])/g.test(password)) {
+            const errorMessage = "Include a special character.";
+            setWrongInfo(errorMessage);
+            return;
+        }
+
+        if (!/(?=.*[A-Z])/g.test(password)) {
+            const errorMessage = "Include an uppercase letter.";
+            setWrongInfo(errorMessage);
+            return;
+        }
+
+        if (!/(?=.*[a-z])/g.test(password)) {
+            const errorMessage = "Include a lowercase letter.";
+            setWrongInfo(errorMessage);
+            return;
+        }
+
+        if (password.length < 8) {
+            const errorMessage = "Minimum 8 characters required.";
+            setWrongInfo(errorMessage);
+            return;
+        }
+
+        setWrongInfo(null);
+
         createUser(email, password)
             .then((userCredential) => {
                 const user = userCredential.user;
@@ -27,8 +73,8 @@ const Register = () => {
             })
             .catch((error) => {
                 // const errorCode = error.code;
-                const errorMessage = error.message;
-                console.log(errorMessage);
+                const errorMessage = error.message.replace("Firebase: ", "");
+                setWrongInfo(errorMessage);
             });
 
 
@@ -78,6 +124,9 @@ const Register = () => {
                                 <div className="form-control my-2">
                                     <div className="flex flex-col justify-start gap-2">
                                         <p>Already a member of our Motor Mart? <Link to="/login" className="text-blue-700">Login Here</Link> </p>
+                                    </div>
+                                    <div className="form-control text-center mt-2 text-red-600 text-lg font-bold">
+                                        <h1>{wrongInfo}</h1>
                                     </div>
                                 </div>
                                 <div className="form-control mt-6">
