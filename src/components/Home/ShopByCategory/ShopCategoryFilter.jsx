@@ -13,8 +13,8 @@ const ShopCategoryFilter = ({ car }) => {
                     <p>Price : ${car.price}</p>
                     <p>Rating : ${car.rating}</p>
                     <div className="card-actions">
-                        <button className="btn bg-red-600 border-red-600 hover:bg-red-700 hover:border-red-700 text-white">View Details</button>
-                        
+                        <Link to={`/toy/${car._id}`}><button className="btn bg-red-600 border-red-600 hover:bg-red-700 hover:border-red-700 text-white">View Details</button></Link>
+
                     </div>
                 </div>
             </div>
