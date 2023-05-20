@@ -59,10 +59,7 @@ const Header = () => {
                                 <span className='flex md:flex-row flex-col gap-4 md:items-center'>
                                     <span><img src={user?.photoURL} alt="profile picture" className='h-10 w-10 rounded-full' /></span>
                                     <button onClick={handleLogOut} className='btn bg-red-600 border-red-600 hover:bg-red-700 hover:border-red-700 text-white'><Link to="/login">Log Out</Link></button>
-                                </span> :
-                                <>
-
-                                </>
+                                </span> : <></>
                         }
                     </li>
                 </ul>

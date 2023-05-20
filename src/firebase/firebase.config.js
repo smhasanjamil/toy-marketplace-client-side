@@ -4,13 +4,14 @@ import { initializeApp } from "firebase/app";
 // https://firebase.google.com/docs/web/setup#available-libraries
 
 // Your web app's Firebase configuration
+// console.log(import.meta.env.VITE_APIKEY)
 const firebaseConfig = {
-    apiKey: "AIzaSyDmK2TX4VLPYaZ8TGIVy-vXrv6SP0V07mc",
-    authDomain: "motor-mart-b007d.firebaseapp.com",
-    projectId: "motor-mart-b007d",
-    storageBucket: "motor-mart-b007d.appspot.com",
-    messagingSenderId: "769447099347",
-    appId: "1:769447099347:web:85b04f8b3a020a7c028d26"
+    apiKey: import.meta.env.VITE_APIKEY,
+    authDomain: import.meta.env.VITE_AUTHDOMAIN,
+    projectId: import.meta.env.VITE_PROJECTID,
+    storageBucket: import.meta.env.VITE_STORAGEBUCKET,
+    messagingSenderId: import.meta.env.VITE_MESSAGINGSENDERID,
+    appId: import.meta.env.VITE_APPID
 };
 
 // Initialize Firebase
