@@ -17,6 +17,7 @@ import Login from './components/Login/Login';
 import ErrorPage from './ErrorPage/ErrorPage';
 import AuthProviders from './providers/AuthProviders';
 import PrivateRoute from './routes/PrivateRoute';
+import ViewToyDetails from './components/Toys/ViewToyDetails/ViewToyDetails';
 
 const router = createBrowserRouter([
   {
@@ -38,6 +39,10 @@ const router = createBrowserRouter([
       {
         path: "/add-a-toy",
         element: <PrivateRoute><AddAToy /></PrivateRoute>,
+      },
+      {
+        path: "/toy/:id",
+        element: <PrivateRoute><ViewToyDetails /></PrivateRoute>,
       },
       {
         path: "/blog",
