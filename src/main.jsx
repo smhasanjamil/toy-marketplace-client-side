@@ -18,6 +18,7 @@ import ErrorPage from './ErrorPage/ErrorPage';
 import AuthProviders from './providers/AuthProviders';
 import PrivateRoute from './routes/PrivateRoute';
 import ViewToyDetails from './components/Toys/ViewToyDetails/ViewToyDetails';
+import UpdateToy from './components/Toys/UpdateToy/UpdateToy';
 
 const router = createBrowserRouter([
   {
@@ -39,6 +40,11 @@ const router = createBrowserRouter([
       {
         path: "/add-a-toy",
         element: <PrivateRoute><AddAToy /></PrivateRoute>,
+      },
+      {
+        path: "/update/:id",
+        element: <PrivateRoute><UpdateToy /></PrivateRoute>,
+        loader: ({params})=> fetch(`http://localhost:5000/all-cars/${params.id}`)
       },
       {
         path: "/toy/:id",

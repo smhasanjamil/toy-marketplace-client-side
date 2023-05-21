@@ -90,7 +90,7 @@ const MyToys = () => {
                                 <td>
                                     <div className="flex flex-row gap-2 items-center justify-center">
                                         <div>
-                                            <Link to={`/toy/${car._id}`}><button><img src="https://i.ibb.co/zrkvJj6/edit-button.png" alt="edit button" className="h-10 w-10" /></button></Link>
+                                            <Link to={`/update/${car._id}`}><button><img src="https://i.ibb.co/zrkvJj6/edit-button.png" alt="edit button" className="h-10 w-10" /></button></Link>
                                         </div>
                                         <div>
                                             <button onClick={() => handleDelete(car._id)}><img src="https://i.ibb.co/6F3Ddr6/remove.png" alt="delete button" className="h-10 w-10" /></button>

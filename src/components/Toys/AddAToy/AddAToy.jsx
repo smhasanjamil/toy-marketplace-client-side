@@ -137,7 +137,7 @@ const AddAToy = () => {
                                 <label className="label">
                                     <span className="label-text">Toy description</span>
                                 </label>
-                                <textarea name="description" placeholder="Toy description" className="textarea textarea-bordered textarea-lg w-full " ></textarea>
+                                <textarea name="description" placeholder="Toy description" className="textarea textarea-bordered textarea-lg w-full " required ></textarea>
                             </div>
 
                             <div className="form-control mt-6">
