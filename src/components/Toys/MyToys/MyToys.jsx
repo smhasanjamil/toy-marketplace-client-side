@@ -1,7 +1,7 @@
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../../providers/AuthProviders";
 import { Link } from "react-router-dom";
-import swal from 'sweetalert';
+import swal from "sweetalert";
 
 
 const MyToys = () => {
@@ -27,8 +27,7 @@ const MyToys = () => {
 
     const handleDelete = (id) => {
         // console.log(id);
-        const proceed = confirm("Are you sure you want to delete?")
-        if (proceed) {
+        
             fetch(`https://motor-mart-server.vercel.app/all-cars/${id}`, {
                 method: 'DELETE'
             })
@@ -36,27 +35,12 @@ const MyToys = () => {
                 .then(data => {
                     console.log(data);
                     if (data.deletedCount > 0) {
-                        swal({
-                            title: "Are you sure?",
-                            text: "Once deleted, you will not be able to recover this data!",
-                            icon: "warning",
-                            buttons: true,
-                            dangerMode: true,
-                        })
-                            .then((willDelete) => {
-                                if (willDelete) {
-                                    swal("Poof! Your data has been deleted!", {
-                                        icon: "success",
-                                    });
-                                } else {
-                                    swal("Your data is safe!");
-                                }
-                            });
+                        swal("Deleted!");
                         const remainingCar = cars.filter(car => car._id !== id);
                         setCars(remainingCar);
                     }
                 })
-        }
+        
     }
 
 

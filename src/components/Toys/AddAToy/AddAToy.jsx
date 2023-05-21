@@ -1,5 +1,6 @@
 import { useContext } from "react";
 import { AuthContext } from "../../../providers/AuthProviders";
+import swal from "sweetalert";
 
 
 const AddAToy = () => {
@@ -46,6 +47,7 @@ const AddAToy = () => {
             .then(data => {
                 console.log(data);
                 if(data.acknowledged){
+                    swal("Good job!", "Toy Added!", "success");
                     form.reset();
                 }
             })
