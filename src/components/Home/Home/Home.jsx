@@ -2,6 +2,7 @@ import ShopByCategory from "../ShopByCategory/ShopByCategory";
 import CustomerReview from "./CustomerReview/CustomerReview";
 import Gallery from "./Gallery/Gallery";
 import Hero from "./Hero";
+import OurService from "./OurService";
 
 
 const Home = () => {
@@ -11,6 +12,7 @@ const Home = () => {
             <Hero />
             <Gallery />
             <ShopByCategory />
+            <OurService />
             <CustomerReview />
         </div>
     );
