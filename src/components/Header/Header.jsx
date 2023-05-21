@@ -53,7 +53,7 @@ const Header = () => {
                             <NavLink to="/register">Register</NavLink>
                         </li>
                     }
-                    <li className="navbar-item">
+                    {/* <li className="navbar-item">
                         {
                             user ?
                                 <span className='flex md:flex-row flex-col gap-4 md:items-center'>
@@ -61,6 +61,20 @@ const Header = () => {
                                     <button onClick={handleLogOut} className='btn bg-red-600 border-red-600 hover:bg-red-700 hover:border-red-700 text-white'><Link to="/login">Log Out</Link></button>
                                 </span> : <></>
                         }
+                    </li> */}
+                    <li className="navbar-item">
+                        {user ?
+                            <span className='flex flex-col md:flex-row gap-5 items-center'>
+                                <div className="relative">
+                                    <img src={user?.photoURL} alt="profile picute" className='h-10 w-10 rounded-full' />
+                                    <div className="absolute inset-0 flex items-center justify-center opacity-0 hover:opacity-100 transition-opacity duration-300 ease-in-out">
+                                        <p className="text-white text-lg font-bold">{user?.displayName}</p>
+                                    </div>
+                                </div>
+                                <div><button onClick={handleLogOut} className='btn bg-red-600 border-red-600 hover:bg-red-700 hover:border-red-700 text-white'><Link to="/login">Log Out</Link></button></div>
+                            </span>
+                            :
+                            <></>}
                     </li>
                 </ul>
                 <div className="navbar-toggle" onClick={() => setIsOpen(!isOpen)}>
