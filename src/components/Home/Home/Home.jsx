@@ -1,4 +1,5 @@
 import ShopByCategory from "../ShopByCategory/ShopByCategory";
+import CustomerReview from "./CustomerReview/CustomerReview";
 import Gallery from "./Gallery/Gallery";
 import Hero from "./Hero";
 
@@ -10,6 +11,7 @@ const Home = () => {
             <Hero />
             <Gallery />
             <ShopByCategory />
+            <CustomerReview />
         </div>
     );
 };

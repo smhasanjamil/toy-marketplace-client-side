@@ -36,6 +36,10 @@ const ShopByCategory = () => {
     return (
         <div>
 
+            <div className="text-center">
+                <h1 className="font-bold text-5xl my-8 border-b-4 inline-block border-red-600 text-red-600">Shop by Category</h1>
+            </div>
+
             <div className="text-center my-8">
                 <div className="btn-group btn-group-vertical lg:btn-group-horizontal">
                     <button className={`btn ${activeButton === 'Truck' ? 'bg-red-600 border-red-600 hover:bg-red-700 hover:border-red-700 text-white' : ''}`}

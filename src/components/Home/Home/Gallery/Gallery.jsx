@@ -9,7 +9,7 @@ const Gallery = () => {
             </div>
 
             <div className="flex flex-col w-full border-opacity-50">
-                <div className="divider">Shop by Top brands</div>
+                <div className="divider">Shop by Top Brands</div>
             </div>
 
             <div className="image-gallery grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 my-8 gap-4">

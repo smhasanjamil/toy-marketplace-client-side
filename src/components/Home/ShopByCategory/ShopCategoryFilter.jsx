@@ -4,6 +4,7 @@ const ShopCategoryFilter = ({ car }) => {
     console.log(car);
     return (
         <div>
+           
 
 
             <div className="card w-full bg-base-100 shadow-xl">
