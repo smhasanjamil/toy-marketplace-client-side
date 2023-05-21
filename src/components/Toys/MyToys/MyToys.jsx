@@ -17,7 +17,27 @@ const MyToys = () => {
                 setCars(data);
             })
     }, [])
-    console.log(cars);
+    // console.log(cars);
+
+    const handleDelete = (id) => {
+        // console.log(id);
+        const proceed = confirm("Are you sure you want to delete?")
+        if (proceed) {
+            fetch(`http://localhost:5000/all-cars/${id}`, {
+                method: 'DELETE'
+            })
+                .then(res => res.json())
+                .then(data => {
+                    console.log(data);
+                    if (data.deletedCount > 0) {
+                        alert('Deleted');
+                        const remainingCar = cars.filter(car => car._id !== id);
+                        setCars(remainingCar);
+                    }
+                })
+        }
+    }
+
     return (
         <div className="container mx-auto px-2">
             <div><h1>Mt Toys</h1></div>
@@ -67,7 +87,16 @@ const MyToys = () => {
                                         readOnly
                                     />
                                 </td>
-                                <td><Link to={`/toy/${car._id}`}><button className="btn bg-red-600 border-red-600 hover:bg-red-700 hover:border-red-700 text-white">View Details</button></Link></td>
+                                <td>
+                                    <div className="flex flex-row gap-2 items-center justify-center">
+                                        <div>
+                                            <Link to={`/toy/${car._id}`}><button><img src="https://i.ibb.co/zrkvJj6/edit-button.png" alt="edit button" className="h-10 w-10" /></button></Link>
+                                        </div>
+                                        <div>
+                                            <button onClick={() => handleDelete(car._id)}><img src="https://i.ibb.co/6F3Ddr6/remove.png" alt="delete button" className="h-10 w-10" /></button>
+                                        </div>
+                                    </div>
+                                </td>
                             </tr>
                         ))}
                     </tbody>
