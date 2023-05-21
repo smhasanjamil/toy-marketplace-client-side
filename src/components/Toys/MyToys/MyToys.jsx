@@ -1,6 +1,7 @@
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../../providers/AuthProviders";
 import { Link } from "react-router-dom";
+import swal from 'sweetalert';
 
 
 const MyToys = () => {
@@ -35,7 +36,22 @@ const MyToys = () => {
                 .then(data => {
                     console.log(data);
                     if (data.deletedCount > 0) {
-                        alert('Deleted');
+                        swal({
+                            title: "Are you sure?",
+                            text: "Once deleted, you will not be able to recover this data!",
+                            icon: "warning",
+                            buttons: true,
+                            dangerMode: true,
+                        })
+                            .then((willDelete) => {
+                                if (willDelete) {
+                                    swal("Poof! Your data has been deleted!", {
+                                        icon: "success",
+                                    });
+                                } else {
+                                    swal("Your data is safe!");
+                                }
+                            });
                         const remainingCar = cars.filter(car => car._id !== id);
                         setCars(remainingCar);
                     }

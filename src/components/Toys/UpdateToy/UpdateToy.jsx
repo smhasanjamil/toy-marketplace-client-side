@@ -1,4 +1,5 @@
 import { useLoaderData, useNavigate } from "react-router-dom";
+import swal from 'sweetalert';
 
 
 const UpdateToy = () => {
@@ -35,7 +36,12 @@ const UpdateToy = () => {
             .then(data => {
                 console.log(data);
                 if (data.modifiedCount > 0) {
-                    alert("Updated");
+                    swal({
+                        title: "Good job!",
+                        text: "Successfully Updated!",
+                        icon: "success",
+                        button: "Okay!",
+                      });
                 }
                 navigate('/my-toys')
             })
