@@ -24,7 +24,7 @@ const UpdateToy = () => {
         console.log(updatedCar);
 
 
-        fetch(`http://localhost:5000/all-cars/${cars._id}`, {
+        fetch(`https://motor-mart-server.vercel.app/all-cars/${cars._id}`, {
             method: 'PUT',
             headers: {
                 "content-type": "application/json"

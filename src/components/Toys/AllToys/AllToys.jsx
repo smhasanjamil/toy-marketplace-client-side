@@ -8,7 +8,7 @@ const AllToys = () => {
     const [searchText, setSearchText] = useState("");
 
     useEffect(() => {
-        fetch('http://localhost:5000/all-cars')
+        fetch('https://motor-mart-server.vercel.app/all-cars')
             .then(res => res.json())
             .then(data => {
                 setCars(data);
@@ -20,14 +20,14 @@ const AllToys = () => {
     // For search
     const handleSearch = () => {
 
-        fetch(`http://localhost:5000/car-search/${searchText}`)
+        fetch(`https://motor-mart-server.vercel.app/car-search/${searchText}`)
             .then(res => res.json())
             .then(data => {
                 console.log(data);
                 setCars(data);
             })
     }
-    
+
     return (
         <div className="container mx-auto px-2">
             <h1>This is all toys section</h1>

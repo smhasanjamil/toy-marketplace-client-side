@@ -35,7 +35,7 @@ const AddAToy = () => {
         console.log(cars);
 
 
-        fetch('http://localhost:5000/all-cars',{
+        fetch('https://motor-mart-server.vercel.app/all-cars',{
             method: 'POST',
             headers: {
                 'content-type': 'application/json'

@@ -44,12 +44,12 @@ const router = createBrowserRouter([
       {
         path: "/update/:id",
         element: <PrivateRoute><UpdateToy /></PrivateRoute>,
-        loader: ({params})=> fetch(`http://localhost:5000/all-cars/${params.id}`)
+        loader: ({params})=> fetch(`https://motor-mart-server.vercel.app/all-cars/${params.id}`)
       },
       {
         path: "/toy/:id",
         element: <PrivateRoute><ViewToyDetails /></PrivateRoute>,
-        loader: ({ params }) => fetch(`http://localhost:5000/all-cars/${params.id}`),
+        loader: ({ params }) => fetch(`https://motor-mart-server.vercel.app/all-cars/${params.id}`),
       },
       {
         path: "/blog",
