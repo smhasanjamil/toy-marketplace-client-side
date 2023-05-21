@@ -2,7 +2,7 @@
 
 const OurService = () => {
     return (
-        <div className="container mx-auto px-2">
+        <div className="container mx-auto px-2 mt-8">
 
             <div className="text-center">
                 <h1 className="font-bold text-5xl my-12 border-b-4 inline-block border-red-600 text-red-600">Why Choose Us</h1>
