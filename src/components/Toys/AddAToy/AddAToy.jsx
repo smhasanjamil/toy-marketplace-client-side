@@ -12,7 +12,7 @@ const AddAToy = () => {
         // console.log("clicked");
         const form = event.target;
         const toyName = form.toyName.value;
-        const sellerName = form.toyName.value;
+        const sellerName = form.sellerName.value;
         const sellerEmail = form.sellerEmail.value;
         const subCategory = form.subCategory.value;
         const price = form.price.value;
