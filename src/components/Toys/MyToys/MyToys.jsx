@@ -66,7 +66,9 @@ const MyToys = () => {
 
     return (
         <div className="container mx-auto px-2">
-            <div><h1>Mt Toys</h1></div>
+            <div className="text-center">
+                <h1 className="font-bold text-5xl my-8 border-b-4 inline-block border-red-600 text-red-600">My Toy</h1>
+            </div>
 
 
 

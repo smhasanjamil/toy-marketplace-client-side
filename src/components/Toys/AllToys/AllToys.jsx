@@ -30,9 +30,9 @@ const AllToys = () => {
 
     return (
         <div className="container mx-auto px-2">
-            <h1>This is all toys section</h1>
-            <h1>Total : {cars.length}</h1>
-
+            <div className="text-center">
+                <h1 className="font-bold text-5xl my-8 border-b-4 inline-block border-red-600 text-red-600">All Toys</h1>
+            </div>
 
             <div className="my-4 flex justify-center gap-2">
                 <input onChange={(e) => setSearchText(e.target.value)} type="text" placeholder="Type here" className="input input-bordered input-error w-full max-w-xs" />
