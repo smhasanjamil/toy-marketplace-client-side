@@ -5,8 +5,8 @@ import { Link } from "react-router-dom";
 
 const MyToys = () => {
     const [cars, setCars] = useState([]);
+    // const [sortOrder, setSortOrder] = useState(null);
 
-    
 
     const { user } = useContext(AuthContext);
     // console.log(user);
@@ -22,7 +22,7 @@ const MyToys = () => {
     // console.log(cars);
 
 
-    
+
 
     const handleDelete = (id) => {
         // console.log(id);
@@ -43,10 +43,47 @@ const MyToys = () => {
         }
     }
 
+
+
+    // Handle sort start
+
+    const handleSortAscending = () => {
+        const sortedCars = [...cars].sort((a, b) => a.price - b.price);
+        setCars(sortedCars);
+        // setSortOrder("ascending");
+    };
+
+    const handleSortDescending = () => {
+        const sortedCars = [...cars].sort((a, b) => b.price - a.price);
+        setCars(sortedCars);
+        // setSortOrder("descending");
+    };
+    // Handle sort end
+
+
+
+
+
     return (
         <div className="container mx-auto px-2">
             <div><h1>Mt Toys</h1></div>
 
+
+
+            <div className=" text-right my-8">
+                <div className="dropdown dropdown-end">
+                    <label tabIndex={0} className="btn m-1">Sort</label>
+                    <ul tabIndex={0} className="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52">
+                        <button onClick={handleSortAscending}>Ascending</button>
+                        <button onClick={handleSortDescending}>Descending</button>
+                    </ul>
+                </div>
+            </div>
+
+            {/* <div className="mb-4">
+                <button onClick={handleSortAscending}>Sort Ascending</button>
+                <button onClick={handleSortDescending}>Sort Descending</button>
+            </div> */}
 
 
             <div className="overflow-x-auto">
