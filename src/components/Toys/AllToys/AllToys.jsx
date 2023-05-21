@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 const AllToys = () => {
 
     const [cars, setCars] = useState([]);
+    const [searchText, setSearchText] = useState("");
 
     useEffect(() => {
         fetch('http://localhost:5000/all-cars')
@@ -14,10 +15,29 @@ const AllToys = () => {
             })
     }, [])
     console.log(cars);
+
+
+    // For search
+    const handleSearch = () => {
+
+        fetch(`http://localhost:5000/car-search/${searchText}`)
+            .then(res => res.json())
+            .then(data => {
+                console.log(data);
+                setCars(data);
+            })
+    }
+    
     return (
         <div className="container mx-auto px-2">
             <h1>This is all toys section</h1>
             <h1>Total : {cars.length}</h1>
+
+
+            <div className="my-4 flex justify-center gap-2">
+                <input onChange={(e) => setSearchText(e.target.value)} type="text" placeholder="Type here" className="input input-bordered input-error w-full max-w-xs" />
+                <button onClick={handleSearch} className="btn bg-red-600 border-red-600 hover:bg-red-700 hover:border-red-700 text-white">Search</button>
+            </div>
 
 
 
